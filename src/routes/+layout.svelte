@@ -1,6 +1,10 @@
 <script>
 	import Header from './Header.svelte';
 	import './styles.css';
+	
+	var d = new Date(); 
+	let currentYear = d.getFullYear().toString();
+
 </script>
 
 <div class="app">
@@ -11,7 +15,11 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p> &copy; Copyright {currentYear}, <a href="http://www.serialdesign.net">Serial Design</a></p>
+		
+		
+		
+		
 	</footer>
 </div>
 

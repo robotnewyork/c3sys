@@ -1,12 +1,16 @@
 <script>
+	import About from './About.svelte';
+	import Artists from './Artists.svelte';
 	import Counter from './Counter.svelte';
+	import Releases from './Releases.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>C3.SYS - Independent record label and production studios</title>
+	<meta name="description" content="C3SYS - Independent record label and production studios" />
 </svelte:head>
 
 <section>
@@ -18,14 +22,17 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		
 	</h1>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	
 
-	<Counter />
+	<About />
+
+	<Artists />
+
+	<Releases />
+
 </section>
 
 <style>

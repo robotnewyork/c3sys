@@ -1,0 +1,33 @@
+{
+    "artists": [
+        {
+            "artistName": "Boy Magician"
+        },
+        {
+            "artistName": "Slum Denizens"
+        },
+        {
+            "artistName": "Skepsys"
+        }
+    ],
+    "releases": [
+        {
+            "catalogNumber": "C2SD001",
+            "artistName": "Slum Denizens",
+            "releaseName": "Groove Solution",
+            "releaseDate": "1/25/2022"
+        },
+        {
+            "catalogNumber": "C2SD002",
+            "artistName": "Slum Denizens",
+            "releaseName": "My Electric Toothbrush",
+            "releaseDate": "8/6/2022"
+        }
+    ],
+    "gear": [
+        {
+            "manufacturer": "Yamaha",
+            "model": "Motif ES8"
+        }
+    ]
+}
