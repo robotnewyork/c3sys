@@ -22,6 +22,125 @@
             "artistName": "Slum Denizens",
             "releaseName": "My Electric Toothbrush",
             "releaseDate": "8/6/2022"
+        },
+        {
+            "catalogNumber": "C3SD003",
+            "artistName": "Slum Denizens",
+            "releaseName": "Madadayo",
+            "releaseDate": "4/30/2023",
+            "tracks": [
+                {
+                    "trackNumber": "1",
+                    "trackTitle": "Madadayo",
+                    "spotifyUrl": "https://open.spotify.com/track/7oAQ4p9wghGWBnssdgHUKL?si=286f31250d2743b6",
+                    "mp3Url": ""
+                }
+            ]
+        },
+        
+        {
+            "catalogNumber": "C2BM001",
+            "artistName": "Boy Magician",
+            "releaseName": "Boy Magician",
+            "releaseDate": "10/1/2002",
+            "tracks": [
+                {
+                    "trackNumber": "1",
+                    "trackTitle": "The Count",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "2",
+                    "trackTitle": "John Wayne",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "3",
+                    "trackTitle": "Buck Naked",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "4",
+                    "trackTitle": "Break 2.0",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "5",
+                    "trackTitle": "Corrupt",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "6",
+                    "trackTitle": "Cylindrical (Glass Model)",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "7",
+                    "trackTitle": "Katana Dream Sequence",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "8",
+                    "trackTitle": "Broken",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "9",
+                    "trackTitle": "Courtney",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "10",
+                    "trackTitle": "E7+10000",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "11",
+                    "trackTitle": "Terminal",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "12",
+                    "trackTitle": "Radio",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "13",
+                    "trackTitle": "Cylindrical",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "14",
+                    "trackTitle": "Comit",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "15",
+                    "trackTitle": "Relentless",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                },
+                {
+                    "trackNumber": "16",
+                    "trackTitle": "Katana Dream Sequence (Freaky G Remix)",
+                    "spotifyUrl": "",
+                    "mp3Url": ""
+                }
+            ]
         }
     ],
     "gear": [
