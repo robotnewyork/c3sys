@@ -1,0 +1,294 @@
+// Footer Component Styles
+
+.footer {
+  background: hsl(var(--card));
+  border-top: 1px solid hsl(var(--border));
+  padding: map-get($spacing, 'xl') 0 map-get($spacing, 'lg');
+  margin-top: auto;
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 map-get($spacing, 'lg');
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: map-get($spacing, 'xl');
+    margin-bottom: map-get($spacing, 'xl');
+
+    @include breakpoint('tablet') {
+      grid-template-columns: 1fr;
+      gap: map-get($spacing, 'lg');
+      text-align: center;
+    }
+  }
+
+  &__section {
+    &--brand {
+      .footer__logo {
+        margin-bottom: map-get($spacing, 'md');
+        max-width: 150px;
+        height: auto;
+      }
+
+      .footer__description {
+        @extend .body-text;
+        color: hsl(var(--muted-foreground));
+        line-height: 1.6;
+        margin-bottom: map-get($spacing, 'md');
+      }
+
+      .footer__social {
+        @include flex-left;
+        gap: map-get($spacing, 'md');
+
+        @include breakpoint('tablet') {
+          @include flex-center;
+        }
+      }
+
+      .footer__social-link {
+        @include flex-center;
+        width: 40px;
+        height: 40px;
+        background: hsl(var(--muted));
+        color: hsl(var(--muted-foreground));
+        border-radius: 50%;
+        @include transition(all, $transition-fast);
+        text-decoration: none;
+
+        &:hover {
+          background: hsl(var(--primary));
+          color: hsl(var(--primary-foreground));
+          @include hover-lift;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    &--links {
+      .footer__title {
+        @extend .section-title;
+        margin-bottom: map-get($spacing, 'md');
+        color: hsl(var(--foreground));
+      }
+
+      .footer__links-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-bottom: map-get($spacing, 'sm');
+        }
+
+        a {
+          @extend .body-text;
+          color: hsl(var(--muted-foreground));
+          text-decoration: none;
+          @include transition(color, $transition-fast);
+
+          &:hover {
+            color: hsl(var(--primary));
+          }
+        }
+      }
+    }
+
+    &--newsletter {
+      .footer__title {
+        @extend .section-title;
+        margin-bottom: map-get($spacing, 'md');
+        color: hsl(var(--foreground));
+      }
+
+      .footer__newsletter-description {
+        @extend .body-text;
+        color: hsl(var(--muted-foreground));
+        margin-bottom: map-get($spacing, 'md');
+        line-height: 1.5;
+      }
+
+      .footer__newsletter-form {
+        @include flex-left;
+        gap: map-get($spacing, 'sm');
+        flex-wrap: wrap;
+
+        @include breakpoint('tablet') {
+          @include flex-column;
+          align-items: stretch;
+        }
+
+        .footer__email-input {
+          flex: 1;
+          min-width: 200px;
+          padding: map-get($spacing, 'sm') map-get($spacing, 'md');
+          border: 1px solid hsl(var(--border));
+          border-radius: 6px;
+          background: hsl(var(--background));
+          color: hsl(var(--foreground));
+          @include font-size('sm');
+          @include transition(border-color, $transition-fast);
+
+          &:focus {
+            outline: none;
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+          }
+
+          &::placeholder {
+            color: hsl(var(--muted-foreground));
+          }
+        }
+
+        .footer__subscribe-button {
+          @include button-primary;
+          padding: map-get($spacing, 'sm') map-get($spacing, 'lg');
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid hsl(var(--border));
+    padding-top: map-get($spacing, 'lg');
+    @include flex-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: map-get($spacing, 'md');
+
+    @include breakpoint('tablet') {
+      @include flex-column;
+      text-align: center;
+    }
+  }
+
+  &__copyright {
+    @extend .small-text;
+    color: hsl(var(--muted-foreground));
+  }
+
+  &__legal-links {
+    @include flex-center;
+    gap: map-get($spacing, 'lg');
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include breakpoint('tablet') {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    a {
+      @extend .small-text;
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      @include transition(color, $transition-fast);
+
+      &:hover {
+        color: hsl(var(--primary));
+      }
+    }
+  }
+
+  &__back-to-top {
+    position: fixed;
+    bottom: map-get($spacing, 'xl');
+    right: map-get($spacing, 'xl');
+    @include flex-center;
+    width: 48px;
+    height: 48px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.3);
+    @include transition(all, $transition-fast);
+    transform: translateY(100px);
+    opacity: 0;
+    visibility: hidden;
+
+    &.visible {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &:hover {
+      background: hsl(var(--primary) / 0.9);
+      @include hover-lift;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include breakpoint('tablet') {
+      bottom: map-get($spacing, 'lg');
+      right: map-get($spacing, 'lg');
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  // Dark mode adjustments
+  .dark & {
+    &__email-input {
+      background: hsl(var(--card));
+    }
+  }
+
+  // Sticky footer implementation
+  &--sticky {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+  }
+}
+
+// Newsletter success state
+.footer__newsletter-success {
+  @include flex-center;
+  gap: map-get($spacing, 'sm');
+  padding: map-get($spacing, 'md');
+  background: hsl(142 76% 36% / 0.1);
+  color: hsl(142 76% 36%);
+  border-radius: 6px;
+  @include font-size('sm');
+  margin-top: map-get($spacing, 'sm');
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Loading state for newsletter form
+.footer__newsletter-form--loading {
+  .footer__subscribe-button {
+    pointer-events: none;
+    opacity: 0.6;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid currentColor;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: map-get($spacing, 'sm');
+    }
+  }
+}

@@ -1,0 +1,3 @@
+# This file ensures the gear directory is tracked by Git even when empty
+# Place equipment photos and gear images here  
+# Use naming convention: brand-model-name.jpg

@@ -1,0 +1,214 @@
+// Audio Player Component Styles
+
+.audio-player {
+  @include glassmorphism(0.95);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--audio-player-height);
+  z-index: map-get($z-index, 'fixed');
+  backdrop-filter: blur(12px);
+  border-top: 1px solid hsl(var(--border));
+
+  @include respond-to('md') {
+    padding: 0 map-get($spacing, 'lg');
+  }
+
+  &__container {
+    @include flex-between;
+    height: 100%;
+    padding: 0 map-get($spacing, 'md');
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__track-info {
+    @include flex-center;
+    gap: map-get($spacing, 'md');
+    flex: 1;
+    min-width: 0; // Allow text truncation
+
+    &-artwork {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      object-fit: cover;
+      background: hsl(var(--muted));
+    }
+
+    &-details {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+
+      .track-title {
+        @extend .track-title;
+        @include transition(color);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .artist-name {
+        @extend .artist-name;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  &__controls {
+    @include flex-center;
+    gap: map-get($spacing, 'md');
+
+    &-button {
+      @include audio-control-button;
+
+      &--play {
+        width: 56px;
+        height: 56px;
+        background: hsl(var(--primary));
+
+        &:hover {
+          @include hover-glow;
+        }
+      }
+
+      &--secondary {
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        color: hsl(var(--muted-foreground));
+
+        &:hover {
+          color: hsl(var(--foreground));
+          background: hsl(var(--muted));
+        }
+      }
+    }
+  }
+
+  &__progress {
+    flex: 2;
+    max-width: 400px;
+    margin: 0 map-get($spacing, 'lg');
+
+    @include respond-to('md') {
+      max-width: 600px;
+    }
+
+    &-container {
+      @include flex-center;
+      gap: map-get($spacing, 'sm');
+    }
+
+    &-bar {
+      @include progress-bar;
+      flex: 1;
+
+      &:hover .progress-fill {
+        background: hsl(var(--primary) / 0.8);
+      }
+    }
+
+    &-time {
+      @extend .duration;
+      min-width: 40px;
+      text-align: center;
+    }
+  }
+
+  &__volume {
+    @include flex-center;
+    gap: map-get($spacing, 'sm');
+
+    &-button {
+      @include audio-control-button;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      color: hsl(var(--muted-foreground));
+
+      &:hover {
+        color: hsl(var(--foreground));
+        background: hsl(var(--muted));
+      }
+    }
+
+    &-slider {
+      width: map-get($audio-controls, 'volume-width');
+      height: map-get($audio-controls, 'progress-height');
+      @include progress-bar;
+
+      @include respond-to('lg') {
+        display: block;
+      }
+
+      // Hide on mobile
+      display: none;
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    &__track-info {
+      flex: 1;
+      max-width: 200px;
+    }
+
+    &__progress {
+      margin: 0 map-get($spacing, 'sm');
+      max-width: none;
+    }
+
+    &__volume {
+      &-slider {
+        display: none;
+      }
+    }
+  }
+
+  // Playing state animations
+  &.is-playing {
+    .audio-player__track-info-artwork {
+      animation: spin 10s linear infinite;
+    }
+
+    .audio-player__controls-button--play {
+      @include hover-glow;
+    }
+  }
+}
+
+// Spinning artwork animation
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// Audio visualizer bars (if added later)
+.audio-visualizer {
+  @include flex-center;
+  gap: 2px;
+  height: 20px;
+
+  &__bar {
+    width: 3px;
+    background: hsl(var(--primary));
+    border-radius: 1px;
+    animation: bounce 1s infinite alternate;
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1s};
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  from { height: 4px; }
+  to { height: 20px; }
+}

@@ -1,0 +1,265 @@
+// Header Component Styles
+
+.header {
+  @include glassmorphism(0.95);
+  position: sticky;
+  top: 0;
+  height: var(--header-height);
+  z-index: map-get($z-index, 'sticky');
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid hsl(var(--border));
+
+  &__container {
+    @include flex-between;
+    height: 100%;
+    padding: 0 map-get($spacing, 'md');
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include respond-to('lg') {
+      padding: 0 map-get($spacing, 'lg');
+    }
+  }
+
+  &__logo {
+    @include flex-center;
+    gap: map-get($spacing, 'sm');
+    @include font-weight('semibold');
+    @include font-size('lg');
+    color: hsl(var(--foreground));
+    text-decoration: none;
+    @include transition(color);
+
+    &:hover {
+      color: hsl(var(--primary));
+    }
+
+    &-icon {
+      width: 32px;
+      height: 32px;
+      color: hsl(var(--primary));
+    }
+  }
+
+  &__nav {
+    @include flex-center;
+    gap: map-get($spacing, 'lg');
+
+    // Hide on mobile
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    &-item {
+      position: relative;
+      @include font-weight('medium');
+      @include font-size('base');
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      @include transition(color);
+      padding: map-get($spacing, 'sm') 0;
+
+      &:hover {
+        color: hsl(var(--foreground));
+      }
+
+      &.active {
+        color: hsl(var(--primary));
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: hsl(var(--primary));
+          border-radius: 1px;
+        }
+      }
+
+      // Dropdown indicator
+      &.has-dropdown {
+        &::before {
+          content: '';
+          position: absolute;
+          right: -12px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 0;
+          height: 0;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-top: 4px solid currentColor;
+          @include transition(transform);
+        }
+
+        &:hover::before {
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
+    }
+  }
+
+  &__mobile-menu {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    @include transition(background);
+
+    // Show only on mobile
+    @include respond-to('md') {
+      display: none;
+    }
+
+    &:hover {
+      background: hsl(var(--muted));
+      border-radius: 4px;
+    }
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // Mobile menu overlay
+  &__mobile-overlay {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(var(--background) / 0.95);
+    backdrop-filter: blur(8px);
+    z-index: map-get($z-index, 'modal');
+    transform: translateX(-100%);
+    @include transition(transform);
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    &-nav {
+      @include flex-column;
+      padding: map-get($spacing, 'xl');
+      gap: map-get($spacing, 'lg');
+
+      .header__nav-item {
+        @include font-size('lg');
+        padding: map-get($spacing, 'md') 0;
+        border-bottom: 1px solid hsl(var(--border));
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  // Search functionality (if added)
+  &__search {
+    @include flex-center;
+    gap: map-get($spacing, 'sm');
+    margin-left: auto;
+    margin-right: map-get($spacing, 'md');
+
+    &-button {
+      @include flex-center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      color: hsl(var(--muted-foreground));
+      cursor: pointer;
+      border-radius: 4px;
+      @include transition(all);
+
+      &:hover {
+        color: hsl(var(--foreground));
+        background: hsl(var(--muted));
+      }
+    }
+
+    &-input {
+      width: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      @include transition(width, $transition-normal);
+      overflow: hidden;
+
+      &.expanded {
+        width: 200px;
+        padding: map-get($spacing, 'sm') map-get($spacing, 'md');
+        background: hsl(var(--input-background));
+        border-radius: 4px;
+      }
+    }
+  }
+
+  // Theme toggle
+  &__theme-toggle {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: hsl(var(--muted-foreground));
+    cursor: pointer;
+    border-radius: 4px;
+    @include transition(all);
+
+    &:hover {
+      color: hsl(var(--foreground));
+      background: hsl(var(--muted));
+    }
+
+    &-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Navigation dropdown styles
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: hsl(var(--popover));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  padding: map-get($spacing, 'sm');
+  min-width: 200px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all, $transition-fast);
+
+  .header__nav-item:hover & {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(4px);
+  }
+
+  &-item {
+    display: block;
+    padding: map-get($spacing, 'sm') map-get($spacing, 'md');
+    color: hsl(var(--popover-foreground));
+    text-decoration: none;
+    border-radius: 4px;
+    @include transition(background);
+    @include font-size('sm');
+
+    &:hover {
+      background: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+  }
+}

@@ -1,0 +1,60 @@
+// Base reset and normalization
+// Works alongside Tailwind's base styles
+
+// Custom properties (CSS variables) - these override Tailwind defaults
+:root {
+  // Audio player specific variables
+  --audio-player-height: #{$audio-player-height};
+  --header-height: #{$header-height};
+  --footer-height: #{$footer-height};
+
+  // Component spacing
+  --component-padding: #{map-get($spacing, 'lg')};
+  --component-margin: #{map-get($spacing, 'md')};
+
+  // Custom transitions
+  --transition-fast: #{$transition-fast};
+  --transition-normal: #{$transition-normal};
+  --transition-slow: #{$transition-slow};
+}
+
+// Additional base styles for music-specific elements
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  // Custom scrollbar
+  @include custom-scrollbar();
+  
+  // Prevent horizontal scroll
+  overflow-x: hidden;
+}
+
+// Selection styling
+::selection {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--primary-foreground));
+}
+
+// Focus styles for accessibility
+*:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+// Image optimization
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Audio elements
+audio {
+  width: 100%;
+  outline: none;
+
+  &:focus {
+    outline: 2px solid hsl(var(--ring));
+  }
+}

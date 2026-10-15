@@ -1,0 +1,275 @@
+// Track List Component Styles
+
+.track-list {
+  &__container {
+    display: grid;
+    gap: map-get($spacing, 'sm');
+  }
+
+  &__item {
+    @include flex-between;
+    padding: map-get($spacing, 'md');
+    border-radius: 8px;
+    background: hsl(var(--card));
+    border: 1px solid transparent;
+    @include transition(all, $transition-fast);
+    cursor: pointer;
+
+    &:hover {
+      background: hsl(var(--accent));
+      border-color: hsl(var(--border));
+      @include hover-lift;
+    }
+
+    &.playing {
+      background: hsl(var(--primary) / 0.1);
+      border-color: hsl(var(--primary));
+
+      .track-list__number {
+        display: none;
+      }
+
+      .track-list__play-indicator {
+        display: flex;
+      }
+
+      .track-list__title {
+        @extend .now-playing;
+        color: hsl(var(--primary));
+      }
+    }
+
+    &.loading {
+      pointer-events: none;
+      opacity: 0.6;
+
+      .track-list__play-button {
+        animation: pulse 1s infinite;
+      }
+    }
+  }
+
+  &__track-info {
+    @include flex-center;
+    gap: map-get($spacing, 'md');
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__number {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    @include font-size('sm');
+    @include font-weight('medium');
+    color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__play-indicator {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    display: none; // Hidden by default, shown when playing
+
+    .audio-visualizer {
+      transform: scale(0.8);
+    }
+  }
+
+  &__play-button {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    @include transition(all, $transition-fast);
+
+    .track-list__item:hover & {
+      opacity: 1;
+    }
+
+    &:hover {
+      background: hsl(var(--primary) / 0.9);
+      transform: scale(1.1);
+    }
+  }
+
+  &__details {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  &__title {
+    @extend .track-title;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__artist {
+    @extend .artist-name;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__metadata {
+    @include flex-center;
+    gap: map-get($spacing, 'lg');
+  }
+
+  &__genre {
+    @extend .genre-tag;
+    background: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+
+  &__duration {
+    @extend .duration;
+    min-width: 48px;
+    text-align: right;
+  }
+
+  &__actions {
+    @include flex-center;
+    gap: map-get($spacing, 'sm');
+    opacity: 0;
+    @include transition(opacity, $transition-fast);
+
+    .track-list__item:hover & {
+      opacity: 1;
+    }
+
+    &-button {
+      @include flex-center;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      color: hsl(var(--muted-foreground));
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      @include transition(all, $transition-fast);
+
+      &:hover {
+        background: hsl(var(--muted));
+        color: hsl(var(--foreground));
+      }
+
+      &.active {
+        color: hsl(var(--primary));
+        background: hsl(var(--primary) / 0.1);
+      }
+    }
+  }
+
+  // Grid layout variants
+  &--grid {
+    .track-list__container {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: map-get($spacing, 'lg');
+    }
+
+    .track-list__item {
+      @include flex-column;
+      text-align: center;
+      padding: map-get($spacing, 'xl');
+
+      &:hover {
+        @include hover-glow;
+      }
+    }
+
+    .track-list__track-info {
+      @include flex-column;
+      gap: map-get($spacing, 'md');
+    }
+
+    .track-list__number {
+      position: absolute;
+      top: map-get($spacing, 'md');
+      left: map-get($spacing, 'md');
+    }
+
+    .track-list__artwork {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-bottom: map-get($spacing, 'md');
+    }
+  }
+
+  // Compact layout
+  &--compact {
+    .track-list__item {
+      padding: map-get($spacing, 'sm') map-get($spacing, 'md');
+    }
+
+    .track-list__details {
+      .track-list__artist {
+        display: none;
+      }
+    }
+
+    .track-list__metadata {
+      gap: map-get($spacing, 'md');
+    }
+  }
+
+  // Loading state
+  &--loading {
+    .track-list__item {
+      @include shimmer-loading;
+    }
+  }
+}
+
+// Shimmer loading animation
+@mixin shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted) / 0.5) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+
+  * {
+    color: transparent !important;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .track-list {
+    &__metadata {
+      gap: map-get($spacing, 'md');
+    }
+
+    &__genre {
+      display: none;
+    }
+
+    &__actions {
+      opacity: 1; // Always show on mobile
+    }
+
+    &--grid {
+      .track-list__container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: map-get($spacing, 'md');
+      }
+    }
+  }
+}

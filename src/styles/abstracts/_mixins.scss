@@ -1,0 +1,259 @@
+// SASS Mixins for C3.SYS Records
+
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
+  }
+}
+
+// Dynamic breakpoint mixin (alias for respond-to)
+@mixin breakpoint($size) {
+  @if map-has-key($breakpoints, $size) {
+    @media (max-width: #{map-get($breakpoints, $size)}) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$size}` not found in $breakpoints map.";
+  }
+}
+
+// Flexbox utilities
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Typography
+@mixin font-size($size) {
+  @if map-has-key($font-sizes, $size) {
+    font-size: map-get($font-sizes, $size);
+  } @else {
+    font-size: $size;
+  }
+}
+
+@mixin font-weight($weight) {
+  @if map-has-key($font-weights, $weight) {
+    font-weight: map-get($font-weights, $weight);
+  } @else {
+    font-weight: $weight;
+  }
+}
+
+// Transitions
+@mixin transition($property: all, $duration: $transition-normal, $easing: ease-in-out) {
+  transition: $property $duration $easing;
+}
+
+// Button mixins
+@mixin button-base {
+  @include flex-center;
+  @include transition(all, $transition-fast);
+  border-radius: 0.375rem;
+  font-weight: map-get($font-weights, 'medium');
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-size($size: 'md') {
+  @if $size == 'sm' {
+    padding: 0.5rem 0.75rem;
+    @include font-size('sm');
+  } @else if $size == 'md' {
+    padding: 0.5rem 1rem;
+    @include font-size('base');
+  } @else if $size == 'lg' {
+    padding: 0.75rem 1.5rem;
+    @include font-size('lg');
+  }
+}
+
+// Card mixins
+@mixin card-base {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+// Audio player specific mixins
+@mixin audio-control-button {
+  @include button-base;
+  width: map-get($audio-controls, 'button-size');
+  height: map-get($audio-controls, 'button-size');
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+
+  &:hover {
+    background: hsl(var(--primary) / 0.9);
+  }
+}
+
+@mixin progress-bar {
+  width: 100%;
+  height: map-get($audio-controls, 'progress-height');
+  background: hsl(var(--muted));
+  border-radius: map-get($audio-controls, 'progress-height');
+  overflow: hidden;
+  cursor: pointer;
+
+  .progress-fill {
+    height: 100%;
+    background: hsl(var(--primary));
+    @include transition(width, $transition-fast);
+  }
+}
+
+// Glass morphism effect
+@mixin glassmorphism($opacity: 0.1) {
+  background: hsl(var(--background) / #{$opacity});
+  backdrop-filter: blur(8px);
+  border: 1px solid hsl(var(--border) / 0.2);
+}
+
+// Scrollbar styling
+@mixin custom-scrollbar($width: 8px) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: $width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground));
+    border-radius: $width;
+
+    &:hover {
+      background: hsl(var(--foreground));
+    }
+  }
+}
+
+// Hover effects
+@mixin hover-lift {
+  @include transition(transform, $transition-fast);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@mixin hover-glow {
+  @include transition(box-shadow, $transition-normal);
+
+  &:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+}
+
+// Additional flex mixins
+@mixin flex-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+// Button variant mixins
+@mixin button-primary {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+
+  &:hover {
+    background: hsl(var(--primary) / 0.9);
+  }
+
+  &:active {
+    background: hsl(var(--primary) / 0.95);
+  }
+}
+
+@mixin button-secondary {
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+
+  &:hover {
+    background: hsl(var(--secondary) / 0.8);
+  }
+
+  &:active {
+    background: hsl(var(--secondary) / 0.9);
+  }
+}
+
+// Shimmer loading animation mixin
+@mixin shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted) / 0.5) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+
+  * {
+    color: transparent !important;
+  }
+}
+
+// Animation keyframes
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

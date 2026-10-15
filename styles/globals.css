@@ -1,0 +1,578 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #0a0a0a;
+  --foreground: #f0f0f0;
+  --card: #1a1a1a;
+  --card-foreground: #f0f0f0;
+  --popover: #1a1a1a;
+  --popover-foreground: #f0f0f0;
+  --primary: #ff006e;
+  --primary-foreground: #ffffff;
+  --secondary: #8338ec;
+  --secondary-foreground: #ffffff;
+  --muted: #2a2a2a;
+  --muted-foreground: #b0b0b0;
+  --accent: #ff006e;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.15);
+  --input: rgba(255, 255, 255, 0.05);
+  --input-background: #2a2a2a;
+  --switch-background: #3a3a3a;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Grunge Metal Palette */
+  --neon-cyan: 0 245 255;
+  --electric-pink: 255 0 110;
+  --neon-orange: 251 86 7;
+  --electric-purple: 131 56 236;
+  --blood-red: 255 7 58;
+  --toxic-yellow: 255 190 11;
+  --steel-gray: 42 42 42;
+  --rust-brown: 139 69 19;
+  --void-black: 5 5 5;
+}
+
+.dark {
+  --background: #050505;
+  --foreground: #ffffff;
+  --card: #0f0f0f;
+  --card-foreground: #ffffff;
+  --popover: #0f0f0f;
+  --popover-foreground: #ffffff;
+  --primary: #00f5ff;
+  --primary-foreground: #000000;
+  --secondary: #ff073a;
+  --secondary-foreground: #ffffff;
+  --muted: #1f1f1f;
+  --muted-foreground: #cccccc;
+  --accent: #ff006e;
+  --accent-foreground: #ffffff;
+  --destructive: #ff073a;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 245, 255, 0.2);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #00f5ff;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: #00f5ff;
+  
+  /* Grunge Metal Palette */
+  --neon-cyan: 0 245 255;
+  --electric-pink: 255 0 110;
+  --neon-orange: 251 86 7;
+  --electric-purple: 131 56 236;
+  --blood-red: 255 7 58;
+  --toxic-yellow: 255 190 11;
+  --steel-gray: 42 42 42;
+  --rust-brown: 139 69 19;
+  --void-black: 5 5 5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: 
+      radial-gradient(circle at 20% 80%, rgb(var(--electric-purple) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgb(var(--blood-red) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgb(var(--neon-cyan) / 0.1) 0%, transparent 50%),
+      var(--background);
+    background-attachment: fixed;
+  }
+  
+  /* Grunge Gradients */
+  .gradient-chaos {
+    background: 
+      linear-gradient(45deg, rgb(var(--electric-pink)), rgb(var(--neon-orange)), rgb(var(--electric-purple)), rgb(var(--toxic-yellow))),
+      rgba(0, 0, 0, 0.3);
+    background-blend-mode: overlay;
+    background-size: 400% 400%;
+    animation: chaosGradient 8s ease-in-out infinite;
+  }
+  
+  .gradient-metal {
+    background: 
+      linear-gradient(135deg, rgb(var(--steel-gray)), rgb(var(--void-black)), rgb(var(--rust-brown))),
+      rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+  }
+  
+  .gradient-neon {
+    background: 
+      linear-gradient(90deg, rgb(var(--neon-cyan)), rgb(var(--electric-pink)), rgb(var(--neon-orange))),
+      rgba(0, 0, 0, 0.3);
+    background-blend-mode: overlay;
+  }
+  
+  /* Brutal Shadows */
+  .shadow-brutal {
+    box-shadow: 
+      0 0 20px rgb(var(--neon-cyan)),
+      0 0 40px rgb(var(--electric-pink)),
+      inset 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+  
+  .shadow-grunge {
+    box-shadow: 
+      0 8px 32px rgb(var(--electric-pink) / 0.3),
+      0 4px 16px rgb(var(--electric-purple) / 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Glow Effects */
+  .glow-neon {
+    text-shadow: 
+      0 0 5px rgb(var(--neon-cyan)),
+      0 0 10px rgb(var(--neon-cyan)),
+      0 0 15px rgb(var(--neon-cyan));
+  }
+  
+  .glow-fire {
+    text-shadow: 
+      0 0 5px rgb(var(--neon-orange)),
+      0 0 10px rgb(var(--blood-red)),
+      0 0 15px rgb(var(--electric-pink));
+  }
+  
+  /* Enhanced Button Styling */
+  .btn-hero {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+    border-radius: inherit;
+  }
+  
+  /* Select Dropdown Styling */
+  [data-radix-popper-content-wrapper] {
+    background-color: transparent !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  [data-slot="select-content"] {
+    background-color: #2a2a2a !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  [data-radix-popper-content-wrapper] > *,
+  [data-slot="select-item"] {
+    color: white !important;
+    background-color: #2a2a2a !important;
+    border: 1px solid transparent !important;
+    padding: 8px 12px !important;
+    margin: 1px 0 !important;
+  }
+  
+  [data-slot="select-item"]:hover,
+  [data-slot="select-item"]:focus,
+  [data-slot="select-item"][data-highlighted] {
+    background-color: rgba(255, 0, 110, 0.2) !important;
+    color: white !important;
+    border: 1px solid white !important;
+  }
+  
+  [data-slot="select-item"][data-state="checked"] {
+    background-color: rgba(255, 0, 110, 0.3) !important;
+    color: white !important;
+  }
+
+  /* Navigation Menu Dropdown Styling */
+  [data-slot="navigation-menu-viewport"],
+  [data-slot="navigation-menu-content"],
+  [data-radix-navigation-menu-viewport],
+  [data-radix-navigation-menu-content],
+  [data-radix-popper-content-wrapper]:has([data-slot="navigation-menu-content"]),
+  .bg-popover:has([data-slot="navigation-menu-content"]) {
+    background-color: #2a2a2a !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Target all navigation menu elements more aggressively */
+  [data-radix-navigation-menu-viewport] *,
+  [data-radix-navigation-menu-content] *,
+  [data-slot="navigation-menu-viewport"] *,
+  [data-slot="navigation-menu-content"] *,
+  .bg-popover .grid,
+  .bg-popover button {
+    color: white !important;
+    background-color: transparent !important;
+  }
+  
+  /* Override any popover background that might be affecting navigation menu */
+  [data-radix-popper-content-wrapper]:has([data-slot="navigation-menu-content"]) .grid {
+    background-color: #2a2a2a !important;
+  }
+  
+  /* Target dynamic Radix navigation menu IDs */
+  [id^="radix-"][id*="navigation-menu"],
+  [id^="radix-"]:has([data-slot="navigation-menu-content"]),
+  div[id^="radix-:r"] {
+    background-color: #2a2a2a !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  [id^="radix-:r"] * {
+    color: white !important;
+  }
+  
+  /* More specific navigation menu content targeting */
+  div[data-slot="navigation-menu-content"],
+  div[data-slot="navigation-menu-content"].bg-popover,
+  .bg-popover[data-slot="navigation-menu-content"] {
+    background-color: #2a2a2a !important;
+    background: #2a2a2a !important;
+  }
+  
+  /* Target the specific navigation menu grid container */
+  [data-slot="navigation-menu-content"] .grid {
+    background-color: #2a2a2a !important;
+    background: #2a2a2a !important;
+  }
+  
+  /* Navigation menu buttons */
+  [data-slot="navigation-menu-content"] button {
+    color: white !important;
+  }
+  
+  [data-slot="navigation-menu-content"] button:hover {
+    background-color: rgba(255, 0, 110, 0.2) !important;
+  }
+  
+  /* Target navigation menu viewport specifically */
+  [data-slot="navigation-menu-viewport"],
+  div[data-slot="navigation-menu-viewport"],
+  *[data-slot="navigation-menu-viewport"] {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Target only the dropdown popup wrapper - more specific */
+  .absolute.top-full:has([data-slot="navigation-menu-viewport"]),
+  .isolate.z-50:has([data-slot="navigation-menu-viewport"]) {
+    background-color: #2a2a2a !important;
+    background: #2a2a2a !important;
+  }
+
+  /* Audio Player Slider Styling */
+  .audio-slider [data-slot="slider-track"] {
+    background-color: rgba(255, 0, 110, 0.2) !important;
+    height: 8px !important;
+    border: 1px solid rgba(255, 0, 110, 0.3) !important;
+  }
+  
+  .audio-slider [data-slot="slider-range"] {
+    background-color: rgb(255, 0, 110) !important;
+  }
+  
+  .audio-slider [data-slot="slider-thumb"] {
+    background-color: rgb(255, 0, 110) !important;
+    border: 2px solid rgb(255, 0, 110) !important;
+    width: 16px !important;
+    height: 16px !important;
+    box-shadow: 0 0 8px rgba(255, 0, 110, 0.8) !important;
+  }
+  
+  /* Override any default thumb styling */
+  .audio-slider button[data-slot="slider-thumb"] {
+    background-color: rgb(255, 0, 110) !important;
+    border-color: rgb(255, 0, 110) !important;
+  }
+  
+  /* Keyframes */
+  @keyframes chaosGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+  
+  @keyframes pulse-neon {
+    0%, 100% { text-shadow: 0 0 5px currentColor, 0 0 10px currentColor; }
+    50% { text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor; }
+  }
+  
+  /* Additional Grunge Classes */
+  .card-grunge {
+    @apply bg-card border-neon-cyan/30 shadow-grunge;
+  }
+  
+  .text-grunge {
+    @apply text-foreground;
+    filter: contrast(1.2) saturate(1.1);
+  }
+  
+  .flicker {
+    animation: flicker 3s infinite;
+  }
+  
+  .pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+  
+  /* Override default card styles */
+  .card {
+    @apply card-grunge;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      @apply text-2xl font-medium leading-relaxed;
+    }
+
+    h2 {
+      @apply text-xl font-medium leading-relaxed;
+    }
+
+    h3 {
+      @apply text-lg font-medium leading-relaxed;
+    }
+
+    h4 {
+      @apply text-base font-medium leading-relaxed;
+    }
+
+    p {
+      @apply text-base font-normal leading-relaxed;
+    }
+
+    label {
+      @apply text-base font-medium leading-relaxed;
+    }
+
+    button {
+      @apply text-base font-medium leading-relaxed;
+    }
+
+    input {
+      @apply text-base font-normal leading-relaxed;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Hero background fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility class for fade-in animation */
+.animate-fade-in {
+  animation: fadeIn 5s ease-in-out forwards;
+}
+
+/* Fix gradient text clipping issue */
+.bg-gradient-to-r.bg-clip-text {
+  line-height: 1.2;
+  padding-bottom: 0.1em;
+  display: inline-block;
+}
+
+/* Prevent text cutoff in gradient titles */
+h1.bg-clip-text {
+  padding-bottom: 0.15em;
+}
+
+/* Override Radix UI border and background for gear list collapsible content */
+.gear-list-no-border[data-slot="collapsible-content"] {
+  border: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+[id^="radix-"][data-slot="collapsible-content"].gear-list-no-border {
+  border: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* HTML Description Links Styling */
+.html-description a {
+  color: rgb(var(--electric-pink));
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.html-description a:hover {
+  opacity: 0.8;
+}
+
+/* Article Content Styling */
+.article-content {
+  line-height: 1.7;
+}
+
+.article-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem 0;
+  color: rgb(var(--electric-pink));
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0 0.75rem 0;
+  color: rgb(var(--neon-cyan));
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 1.25rem 0 0.5rem 0;
+  color: rgb(var(--electric-pink));
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+}
+
+.article-content iframe {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}
+
+.article-content blockquote {
+  border-left: 4px solid rgb(var(--electric-pink));
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.article-content ul, .article-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin: 0.25rem 0;
+}

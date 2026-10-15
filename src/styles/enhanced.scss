@@ -1,0 +1,106 @@
+// Simple SASS integration for C3.SYS Records
+// This file demonstrates SASS capabilities alongside the existing CSS
+
+// Variables
+$primary-color: #030213;
+$secondary-color: #e9ebef;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-hover {
+  transition: all 0.2s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Component styles that enhance the existing CSS
+.audio-player-enhanced {
+  .play-button {
+    @include flex-center;
+    @include button-hover;
+    background: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: $secondary-color;
+    border-radius: 2px;
+    overflow: hidden;
+    
+    .progress-fill {
+      height: 100%;
+      background: $primary-color;
+      transition: width 0.1s ease;
+    }
+  }
+}
+
+.card-enhanced {
+  padding: $spacing-lg;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  
+  @include button-hover;
+  
+  &:hover {
+    border-color: $primary-color;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+  
+  .card-content {
+    color: #64748b;
+    line-height: 1.6;
+  }
+}
+
+
+
+// Utility classes
+.spacing {
+  &-sm { margin: $spacing-sm; }
+  &-md { margin: $spacing-md; }
+  &-lg { margin: $spacing-lg; }
+  &-xl { margin: $spacing-xl; }
+}
+
+.text {
+  &-primary { color: $primary-color; }
+  &-secondary { color: #64748b; }
+}
+
+// Responsive utilities
+@media (max-width: 768px) {
+  .card-enhanced {
+    padding: $spacing-md;
+  }
+  
+  .audio-player-enhanced .play-button {
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -1,0 +1,387 @@
+// Button Component Styles
+
+.btn {
+  @include flex-center;
+  gap: map-get($spacing, 'sm');
+  padding: map-get($spacing, 'sm') map-get($spacing, 'lg');
+  border: 1px solid transparent;
+  border-radius: 6px;
+  @include font-size('sm');
+  @include font-weight('medium');
+  text-decoration: none;
+  cursor: pointer;
+  @include transition(all, $transition-fast);
+  white-space: nowrap;
+  user-select: none;
+
+  // Focus styles
+  &:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  // Disabled state
+  &:disabled,
+  &[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  // Icon sizing
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  // Primary variant
+  &--primary {
+    @include button-primary;
+  }
+
+  // Secondary variant
+  &--secondary {
+    @include button-secondary;
+  }
+
+  // Destructive variant
+  &--destructive {
+    background: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+
+    &:hover {
+      background: hsl(var(--destructive) / 0.9);
+    }
+
+    &:active {
+      background: hsl(var(--destructive) / 0.95);
+    }
+  }
+
+  // Outline variant
+  &--outline {
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+
+    &:hover {
+      background: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+
+    &:active {
+      background: hsl(var(--accent) / 0.8);
+    }
+  }
+
+  // Ghost variant
+  &--ghost {
+    background: transparent;
+    color: hsl(var(--foreground));
+
+    &:hover {
+      background: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+
+    &:active {
+      background: hsl(var(--accent) / 0.8);
+    }
+  }
+
+  // Link variant
+  &--link {
+    background: transparent;
+    color: hsl(var(--primary));
+    border: none;
+    padding: 0;
+    text-underline-offset: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: hsl(var(--primary) / 0.8);
+    }
+  }
+
+  // Size variants
+  &--xs {
+    padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
+    @include font-size('xs');
+    gap: map-get($spacing, 'xs');
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &--sm {
+    padding: map-get($spacing, 'xs') map-get($spacing, 'md');
+    @include font-size('sm');
+    gap: map-get($spacing, 'xs');
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &--lg {
+    padding: map-get($spacing, 'md') map-get($spacing, 'xl');
+    @include font-size('base');
+    gap: map-get($spacing, 'sm');
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &--xl {
+    padding: map-get($spacing, 'lg') map-get($spacing, '2xl');
+    @include font-size('lg');
+    gap: map-get($spacing, 'sm');
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // Icon-only buttons
+  &--icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+
+    &.btn--xs {
+      width: 24px;
+      height: 24px;
+    }
+
+    &.btn--sm {
+      width: 32px;
+      height: 32px;
+    }
+
+    &.btn--lg {
+      width: 48px;
+      height: 48px;
+    }
+
+    &.btn--xl {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  // Loading state
+  &--loading {
+    pointer-events: none;
+    opacity: 0.7;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid currentColor;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    // Hide text when loading
+    & > *:not(::after) {
+      opacity: 0;
+    }
+  }
+
+  // Special button types
+  &--play {
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.3);
+
+    &:hover {
+      background: hsl(var(--primary) / 0.9);
+      @include hover-lift;
+      box-shadow: 0 6px 16px hsl(var(--primary) / 0.4);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      margin-left: 2px; // Optical alignment for play icon
+    }
+
+    &.playing svg {
+      margin-left: 0;
+    }
+
+    // Size variants for play button
+    &.btn--sm {
+      width: 40px;
+      height: 40px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+        margin-left: 1px;
+      }
+    }
+
+    &.btn--lg {
+      width: 72px;
+      height: 72px;
+
+      svg {
+        width: 32px;
+        height: 32px;
+        margin-left: 3px;
+      }
+    }
+  }
+
+  &--favorite {
+    &.active {
+      color: hsl(var(--destructive));
+      
+      svg {
+        fill: currentColor;
+      }
+    }
+
+    &:hover:not(.active) {
+      color: hsl(var(--destructive) / 0.7);
+    }
+  }
+
+  &--share {
+    &:hover {
+      @include hover-glow;
+    }
+
+    &.copied {
+      background: hsl(142 76% 36%);
+      color: white;
+    }
+  }
+}
+
+// Button groups
+.btn-group {
+  @include flex-left;
+  
+  .btn {
+    border-radius: 0;
+    border-right-width: 0;
+
+    &:first-child {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    &:last-child {
+      border-right-width: 1px;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+
+    &:not(:last-child):hover {
+      border-right-width: 1px;
+      margin-right: -1px;
+      z-index: 1;
+    }
+  }
+
+  &--vertical {
+    @include flex-column;
+
+    .btn {
+      border-radius: 0;
+      border-right-width: 1px;
+      border-bottom-width: 0;
+
+      &:first-child {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border-bottom-left-radius: 0;
+      }
+
+      &:last-child {
+        border-bottom-width: 1px;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+
+      &:not(:last-child):hover {
+        border-bottom-width: 1px;
+        border-right-width: 1px;
+        margin-bottom: -1px;
+        margin-right: 0;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+// Floating Action Button (FAB)
+.fab {
+  @extend .btn, .btn--primary, .btn--icon;
+  position: fixed;
+  bottom: map-get($spacing, 'xl');
+  right: map-get($spacing, 'xl');
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px hsl(var(--shadow) / 0.15);
+  z-index: 50;
+
+  &:hover {
+    @include hover-lift;
+    box-shadow: 0 6px 16px hsl(var(--shadow) / 0.2);
+  }
+
+  @include breakpoint('mobile') {
+    bottom: map-get($spacing, 'lg');
+    right: map-get($spacing, 'lg');
+    width: 48px;
+    height: 48px;
+  }
+
+  // Extended FAB
+  &--extended {
+    width: auto;
+    border-radius: 28px;
+    padding: 0 map-get($spacing, 'lg');
+    gap: map-get($spacing, 'sm');
+  }
+}
+
+// Responsive button adjustments
+@include breakpoint('mobile') {
+  .btn {
+    // Increase touch target on mobile
+    min-height: 44px;
+    
+    &--sm {
+      min-height: 36px;
+    }
+
+    &--lg {
+      min-height: 52px;
+    }
+  }
+}
