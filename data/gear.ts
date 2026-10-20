@@ -748,6 +748,75 @@ export const gearData = [
     image: "/images/gear/ozone.jpg",
     current: true,
     url: "https://www.izotope.com/en/products/ozone.html"
+  },
+  {
+    id: "sm58",
+    name: "Shure SM58",
+    category: "Microphone",
+    type: "Hardware",
+    description: "",
+    image: "",
+    url: "https://www.shure.com/en-US/products/microphones/sm58",
+    current: false
+  },
+  {
+    id: "18i20",
+    name: "Focusrite Scarlett 18i20",
+    category: "Audio Interface",
+    type: "Hardware",
+    description: "",
+    image: "",
+    url: "https://focusrite.com/en/audio-interface/scarlett/scarlett-18i20",
+    current: true
+  },
+  {
+    id: "beta52a",
+    name: "Shure Beta 52A",
+    category: "Microphone",
+    type: "Hardware",
+    description: "",
+    image: "",
+    url: "https://www.shure.com/en-US/products/microphones/beta-52a",
+    current: true
+  },
+  {
+    id: "b1",
+    name: "Behringer B1",
+    category: "Microphone",
+    type: "Hardware",
+    description: "",
+    image: "",
+    url: "https://www.behringer.com/product.html?modelCode=P0A0S",
+    current: true
+  },
+{
+    id: "boss-katana-50-mkii",
+    name: "Boss Katana 50 mkII",
+    category: "Guitar Amplifier",
+    type: "Hardware",
+    description: "",
+    image: "",
+    url: "https://www.boss.info/us/products/katana_50_mkii/",
+    current: false
+  },
+  {
+    id: "sterling-stingray-musicman",
+    name: "Sterling Stingray Musicman",
+    category: "Bass Guitar",
+    type: "Hardware",
+    description: "",
+    image: "",
+    url: "https://www.music-man.com/instruments/basses/sterling-stingray",
+    current: false
+  },
+  {
+    id: "schecter-hellraiser-c1",
+    name: "Schecter Hellraiser C1",
+    category: "Electric Guitar",
+    type: "Hardware",
+    description: "",
+    image: "",
+    url: "https://www.schecterguitars.com/guitars/c/hellraiser-c-1",
+    current: false
   }
-
 ];

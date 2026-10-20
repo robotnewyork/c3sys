@@ -15,8 +15,8 @@ interface Track {
   id: string;
   title: string;
   artist: string;
-  duration: string;
-  audioUrl: string;
+  duration?: string;
+  audioUrl?: string;
   trackNumber?: number;
   streamingLinks?: StreamingLinksData;
 }
@@ -33,7 +33,7 @@ export function TrackList({ tracks, showArtist = true, showTrackNumber = true, t
 
   React.useEffect(() => {
     if (tracks.length > 0) {
-      setPlaylist(tracks);
+      setPlaylist(tracks.filter(track => track.audioUrl));
     }
   }, [tracks, setPlaylist]);
 
@@ -61,18 +61,20 @@ export function TrackList({ tracks, showArtist = true, showTrackNumber = true, t
           <div key={track.id} className="px-2 py-1 rounded hover:bg-muted/50 transition-colors">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => handlePlay(track)}
-                  className="p-1"
-                >
-                  {currentTrack?.id === track.id && isPlaying ? (
-                    <Pause className="h-4 w-4" />
-                  ) : (
-                    <Play className="h-4 w-4" />
-                  )}
-                </Button>
+                {track.audioUrl && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handlePlay(track)}
+                    className="p-1"
+                  >
+                    {currentTrack?.id === track.id && isPlaying ? (
+                      <Pause className="h-4 w-4" />
+                    ) : (
+                      <Play className="h-4 w-4" />
+                    )}
+                  </Button>
+                )}
 
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
@@ -91,13 +93,15 @@ export function TrackList({ tracks, showArtist = true, showTrackNumber = true, t
                 </div>
               </div>
 
-              <div className="text-sm text-muted-foreground">
-                {track.duration}
-              </div>
+              {track.duration && (
+                <div className="text-sm text-muted-foreground">
+                  {track.duration}
+                </div>
+              )}
             </div>
             
             {track.streamingLinks && (
-              <div className="ml-12">
+              <div className={track.audioUrl ? 'ml-12' : undefined}>
                 <StreamingLinks 
                   links={track.streamingLinks}
                   size="sm"

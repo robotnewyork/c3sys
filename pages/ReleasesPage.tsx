@@ -24,7 +24,8 @@ export function ReleasesPage({ onNavigate }: ReleasesPageProps) {
   const [filterGenre, setFilterGenre] = useState('all');
 
   const allFormats = [...new Set(releasesData.flatMap(release => release.format))];
-  const allGenres = [...new Set(releasesData.flatMap(release => release.genre))];
+  const allGenres = [...new Set(releasesData.flatMap(release => release.genre))]
+    .sort((first, second) => first.localeCompare(second));
 
   const filteredAndSortedReleases = useMemo(() => {
     let filtered = releasesData;
@@ -75,7 +76,7 @@ export function ReleasesPage({ onNavigate }: ReleasesPageProps) {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl mb-4">Releases</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Explore our complete catalog of electronic music releases. From ambient soundscapes to driving techno.
+            Here are the official releases from C3.SYS.
           </p>
         </div>
 

@@ -374,8 +374,9 @@ export const tracksData: Track[] = [
     artist: "Paranoia",
     artistId: "paranoia",
     releaseId: "C3P001",
+    trackNumber: 1,
     featured: true,
     description: "",
-    gear: ["cubase"]
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
   }
 ];

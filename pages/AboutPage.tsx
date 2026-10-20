@@ -132,6 +132,36 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                 
               </p>
             </Card>
+
+            <Card className="p-6 text-center">
+              <div className="aspect-square relative mb-6 rounded-full overflow-hidden mx-auto w-32 h-32">
+                <ImageWithFallback
+                  src="/images/team/cody.jpg"
+                  alt="Cody Redford"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl mb-2">Cody Redford</h3>
+              <Badge variant="secondary" className="mb-3">Guitar/Vocals</Badge>
+              <p className="text-muted-foreground text-sm">
+                
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center">
+              <div className="aspect-square relative mb-6 rounded-full overflow-hidden mx-auto w-32 h-32">
+                <ImageWithFallback
+                  src="/images/team/rob.jpg"
+                  alt="Rob Turpin"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl mb-2">Rob Turpin</h3>
+              <Badge variant="secondary" className="mb-3">Drums/Bass</Badge>
+              <p className="text-muted-foreground text-sm">
+                
+              </p>
+            </Card>
           </div>
         </div>
 
@@ -140,7 +170,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           <Card className="p-8 gradient-metal shadow-brutal border-neon-cyan/50">
             <h2 className="text-2xl md:text-3xl mb-4">Want to Collab?</h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              If you're interested in working on a project together or chat about music, feel free to send me a message.
+              If you're interested in working on a project together or chat about music, send us a message.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" onClick={() => onNavigate('contact')}>

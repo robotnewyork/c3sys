@@ -259,7 +259,7 @@ export function GearPage({ onNavigate }: GearPageProps) {
                               togglePlayPause();
                             } else {
                               // Set playlist to all unreleased tracks and play the selected one
-                              const unreleasedTracks = tracksData.filter(t => t.releaseId === null);
+                              const unreleasedTracks = tracksData.filter(track => track.releaseId === null && track.audioUrl);
                               setPlaylist(unreleasedTracks);
                               playTrack(track);
                             }
@@ -271,22 +271,24 @@ export function GearPage({ onNavigate }: GearPageProps) {
                                 {track.title}
                                 <span className="ml-1 text-xs opacity-70">(Demo)</span>
                               </span>
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                className="p-1 h-4 w-4 hover:bg-transparent group"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handlePlay();
-                                }}
-                                title={currentTrack?.id === track.id && isPlaying ? 'Pause' : 'Play demo'}
-                              >
-                                {currentTrack?.id === track.id && isPlaying ? (
-                                  <Pause className="h-4 w-4 group-hover:text-primary transition-colors" />
-                                ) : (
-                                  <Play className="h-4 w-4 group-hover:text-primary transition-colors" />
-                                )}
-                              </Button>
+                              {track.audioUrl && (
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="p-1 h-4 w-4 hover:bg-transparent group"
+                                  onClick={(event) => {
+                                    event.stopPropagation();
+                                    handlePlay();
+                                  }}
+                                  title={currentTrack?.id === track.id && isPlaying ? 'Pause' : 'Play demo'}
+                                >
+                                  {currentTrack?.id === track.id && isPlaying ? (
+                                    <Pause className="h-4 w-4 group-hover:text-primary transition-colors" />
+                                  ) : (
+                                    <Play className="h-4 w-4 group-hover:text-primary transition-colors" />
+                                  )}
+                                </Button>
+                              )}
                             </div>
                           );
                         })}

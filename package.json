@@ -69,6 +69,7 @@
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.14",
     "aws-cli-js": "^2.2.3",
+    "baseline-browser-mapping": "^2.11.29",
     "dotenv": "^17.2.2",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",

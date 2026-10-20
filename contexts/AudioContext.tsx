@@ -4,8 +4,8 @@ interface Track {
   id: string;
   title: string;
   artist: string;
-  audioUrl: string;
-  duration: string;
+  audioUrl?: string;
+  duration?: string;
   description?: string;
   artwork?: string;
 }
@@ -63,7 +63,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const playTrack = (track: Track) => {
-    if (!audioRef.current) return;
+    if (!audioRef.current || !track.audioUrl) return;
 
     if (currentTrack?.id !== track.id) {
       audioRef.current.src = track.audioUrl;

@@ -48,7 +48,7 @@ export function BackCatalogPage({ onNavigate }: BackCatalogPageProps) {
       togglePlayPause();
     } else {
       // Set the playlist to all back catalog tracks and play the selected one
-      setPlaylist(backCatalogTracks);
+      setPlaylist(backCatalogTracks.filter(track => track.audioUrl));
       playTrack(trackForPlayer);
     }
   };
@@ -172,18 +172,20 @@ export function BackCatalogPage({ onNavigate }: BackCatalogPageProps) {
                                     <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
                                       {track.trackNumber}
                                     </span>
-                                    <Button
-                                      variant="ghost"
-                                      size="sm"
-                                      onClick={() => handlePlayTrack(track, item)}
-                                      className="p-1 h-6 w-6"
-                                    >
-                                      {currentTrack?.id === track.id && isPlaying ? (
-                                        <Pause className="h-3 w-3" />
-                                      ) : (
-                                        <Play className="h-3 w-3" />
-                                      )}
-                                    </Button>
+                                    {track.audioUrl && (
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => handlePlayTrack(track, item)}
+                                        className="p-1 h-6 w-6"
+                                      >
+                                        {currentTrack?.id === track.id && isPlaying ? (
+                                          <Pause className="h-3 w-3" />
+                                        ) : (
+                                          <Play className="h-3 w-3" />
+                                        )}
+                                      </Button>
+                                    )}
                                     <h5 className="font-medium">{track.title}</h5>
                                   </div>
                                   {track.description && (
@@ -200,9 +202,11 @@ export function BackCatalogPage({ onNavigate }: BackCatalogPageProps) {
                                     />
                                   )}
                                 </div>
-                                <span className="text-sm text-muted-foreground ml-4">
-                                  {track.duration}
-                                </span>
+                                {track.duration && (
+                                  <span className="text-sm text-muted-foreground ml-4">
+                                    {track.duration}
+                                  </span>
+                                )}
                               </div>
                             </div>
                           ))}
