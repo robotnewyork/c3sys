@@ -83,10 +83,9 @@ export function GearPage({ onNavigate }: GearPageProps) {
       <div className="container px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl mb-4">Studio Gear</h1>
+          <h1 className="text-4xl md:text-5xl mb-4">Gear List</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            The tools and instruments that shape our sound. From vintage analog synthesizers to modern software plugins, 
-            explore the gear behind our releases.
+            Gear that has been used in our releases and recordings. Select "Current" to view our current studio gear.
           </p>
         </div>
 

@@ -818,5 +818,15 @@ export const gearData = [
     image: "",
     url: "https://www.schecterguitars.com/guitars/c/hellraiser-c-1",
     current: false
+  },
+  {
+    id: "bm-14m",
+    name: "Behringer BM-14M",
+    category: "FX",
+    type: "Hardware",
+    description: "",
+    image: "/images/gear/bm14m.jpg",
+    url: "https://www.behringer.com/en/products/0709-AKT",
+    current: true
   }
 ];

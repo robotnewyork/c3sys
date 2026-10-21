@@ -59,8 +59,8 @@ export function TrackList({ tracks, showArtist = true, showTrackNumber = true, t
       <div className="space-y-0">
         {tracks.map((track) => (
           <div key={track.id} className="px-2 py-1 rounded hover:bg-muted/50 transition-colors">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex min-w-0 flex-1 items-center space-x-2">
                 {track.audioUrl && (
                   <Button
                     variant="ghost"
@@ -76,14 +76,14 @@ export function TrackList({ tracks, showArtist = true, showTrackNumber = true, t
                   </Button>
                 )}
 
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     {showTrackNumber && track.trackNumber != null && track.trackNumber > 0 && (
                       <span className="text-sm font-mono font-medium text-muted-foreground bg-muted/50 px-2 py-1 rounded min-w-[2rem] text-center">
                         {track.trackNumber.toString().padStart(2, '0')}.
                       </span>
                     )}
-                    <span className={currentTrack?.id === track.id ? 'text-electric-pink font-medium' : 'font-medium'}>
+                    <span className={`min-w-0 break-words ${currentTrack?.id === track.id ? 'text-electric-pink font-medium' : 'font-medium'}`}>
                       {track.title}
                     </span>
                   </div>
@@ -94,20 +94,15 @@ export function TrackList({ tracks, showArtist = true, showTrackNumber = true, t
               </div>
 
               {track.duration && (
-                <div className="text-sm text-muted-foreground">
+                <div className="shrink-0 text-sm text-muted-foreground">
                   {track.duration}
                 </div>
               )}
+
+              {track.streamingLinks && (
+                <StreamingLinks links={track.streamingLinks} size="sm" iconOnly className={track.duration ? 'ml-2' : undefined} />
+              )}
             </div>
-            
-            {track.streamingLinks && (
-              <div className={track.audioUrl ? 'ml-12' : undefined}>
-                <StreamingLinks 
-                  links={track.streamingLinks}
-                  size="sm"
-                />
-              </div>
-            )}
           </div>
         ))}
       </div>

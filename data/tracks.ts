@@ -374,8 +374,14 @@ export const tracksData: Track[] = [
     artist: "Paranoia",
     artistId: "paranoia",
     releaseId: "C3P001",
+    duration: "3:42",
     trackNumber: 1,
     featured: true,
+    streamingLinks: {
+      appleMusic: "https://music.apple.com/us/album/deadbeat-single/6800463801",
+      spotify: "https://open.spotify.com/album/1aBfdXzoYDmHmJMD3FKyz2?si=Z5MAuS_5TaiDNtwLHt7Cbg",
+      youtube: "https://www.youtube.com/watch?v=vuI77MutwFs"
+    },
     description: "",
     gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
   }
