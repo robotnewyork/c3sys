@@ -96,18 +96,6 @@ export function ReleasesPage({ onNavigate }: ReleasesPageProps) {
             </SelectContent>
           </Select>
 
-          <Select value={filterFormat} onValueChange={setFilterFormat}>
-            <SelectTrigger className="w-full md:w-48">
-              <SelectValue placeholder="Format" />
-            </SelectTrigger>
-            <SelectContent className="bg-white border border-gray-200">
-              <SelectItem value="all">All Formats</SelectItem>
-              {allFormats.map((format) => (
-                <SelectItem key={format} value={format}>{format}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
           <Select value={filterGenre} onValueChange={setFilterGenre}>
             <SelectTrigger className="w-full md:w-48">
               <SelectValue placeholder="Genre" />
