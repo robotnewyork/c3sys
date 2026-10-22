@@ -383,6 +383,6 @@ export const tracksData: Track[] = [
       youtube: "https://www.youtube.com/watch?v=vuI77MutwFs"
     },
     description: "",
-    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7","sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
   }
 ];

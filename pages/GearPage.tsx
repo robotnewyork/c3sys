@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { ExternalLink, Cpu, Monitor, Check, X, Play, Pause, ChevronDown, ChevronRight } from 'lucide-react';
+import { ExternalLink, Cpu, Monitor, Check, X, Play, Pause, ChevronDown, ChevronRight, RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { useAudio } from '../contexts/AudioContext';
 
 import { gearData } from '../data/gear';
@@ -16,19 +15,23 @@ interface GearPageProps {
   onNavigate?: (page: string) => void;
 }
 
+const statuses = ['Current', 'Historical'];
+const gearTypes = [...new Set(gearData.map(gear => gear.type))].sort();
+const categories = [...new Set(gearData.map(gear => gear.category))].sort();
+
 export function GearPage({ onNavigate }: GearPageProps) {
-  const [filter, setFilter] = useState('all');
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [selectedStatuses, setSelectedStatuses] = useState<string[]>(statuses);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>(gearTypes);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(categories);
   const [expandedDemoTracks, setExpandedDemoTracks] = useState<Set<string>>(new Set());
   const { currentTrack, isPlaying, playTrack, togglePlayPause, setPlaylist } = useAudio();
 
   const filteredGear = gearData
     .filter(gear => {
-      if (filter === 'all') return true;
-      if (filter === 'current') return gear.current;
-      if (filter === 'historical') return !gear.current;
-      if (filter === 'hardware') return gear.type === 'Hardware';
-      if (filter === 'software') return gear.type === 'Software';
-      return true;
+      return selectedStatuses.includes(gear.current ? 'Current' : 'Historical') &&
+        selectedTypes.includes(gear.type) &&
+        selectedCategories.includes(gear.category);
     })
     .sort((a, b) => {
       // Sort by current status first (current gear before historical)
@@ -39,7 +42,26 @@ export function GearPage({ onNavigate }: GearPageProps) {
       return a.name.localeCompare(b.name);
     });
 
-  const categories = [...new Set(gearData.map(gear => gear.category))];
+  const hasActiveFilters = selectedStatuses.length !== statuses.length ||
+    selectedTypes.length !== gearTypes.length || selectedCategories.length !== categories.length;
+
+  const resetFilters = () => {
+    setSelectedStatuses(statuses);
+    setSelectedTypes(gearTypes);
+    setSelectedCategories(categories);
+  };
+
+  const toggleFilter = (value: string, setSelected: React.Dispatch<React.SetStateAction<string[]>>) => {
+    setSelected(selected => selected.includes(value)
+      ? selected.filter(option => option !== value)
+      : [...selected, value]);
+  };
+
+  const filterGroups = [
+    { label: 'Status', options: statuses, selected: selectedStatuses, setSelected: setSelectedStatuses },
+    { label: 'Type', options: gearTypes, selected: selectedTypes, setSelected: setSelectedTypes },
+    { label: 'Categories', options: categories, selected: selectedCategories, setSelected: setSelectedCategories },
+  ];
 
   const toggleDemoTracks = (gearId: string) => {
     const newExpanded = new Set(expandedDemoTracks);
@@ -85,61 +107,88 @@ export function GearPage({ onNavigate }: GearPageProps) {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl mb-4">Gear List</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Gear that has been used in our releases and recordings. Select "Current" to view our current studio gear.
+            Gear that has been used in our releases and recordings.
           </p>
         </div>
 
         {/* Filter Controls */}
-        <div className="mb-8">
-          <div className="text-center mb-4">
-            <h2 className="text-lg font-medium mb-2">Filter Gear</h2>
-            <p className="text-sm text-muted-foreground">
-              Showing {filteredGear.length} of {gearData.length} items
-              {filter !== 'all' && (
-                <span className="ml-1 text-primary font-medium">
-                  ({filter === 'current' ? 'Currently Used' : 
-                    filter === 'historical' ? 'Historical Items' : 
-                    filter === 'hardware' ? 'Hardware Only' : 
-                    filter === 'software' ? 'Software Only' : filter})
-                </span>
+        <section className="mb-8 border-y py-3" aria-labelledby="gear-filter-heading">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 id="gear-filter-heading" className="sr-only">Filter Gear</h2>
+              <p className="text-sm text-muted-foreground" role="status" aria-live="polite" aria-atomic="true">
+                Showing {filteredGear.length} of {gearData.length} items
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              {hasActiveFilters && (
+                <Button variant="ghost" size="sm" onClick={resetFilters}>
+                  <RotateCcw className="h-4 w-4 mr-2" aria-hidden="true" />
+                  Reset filters
+                </Button>
               )}
-            </p>
+              <Button
+                variant={filtersOpen ? 'secondary' : 'ghost'}
+                size="icon"
+                className="relative h-11 w-11 shrink-0"
+                onClick={() => setFiltersOpen(open => !open)}
+                aria-label={`${filtersOpen ? 'Hide' : 'Show'} filters${hasActiveFilters ? ' (filters active)' : ''}`}
+                aria-expanded={filtersOpen}
+                aria-controls="gear-filter-options"
+                title={filtersOpen ? 'Hide filters' : 'Show filters'}
+              >
+                <SlidersHorizontal className="h-5 w-5" aria-hidden="true" />
+                {hasActiveFilters && <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />}
+              </Button>
+            </div>
           </div>
-          <Tabs value={filter} onValueChange={setFilter}>
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-5">
-              <TabsTrigger 
-                value="all"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                All Gear
-              </TabsTrigger>
-              <TabsTrigger 
-                value="current"
-                className="data-[state=active]:bg-green-500 data-[state=active]:text-white"
-              >
-                Current
-              </TabsTrigger>
-              <TabsTrigger 
-                value="historical"
-                className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
-              >
-                Historical
-              </TabsTrigger>
-              <TabsTrigger 
-                value="hardware"
-                className="data-[state=active]:bg-blue-500 data-[state=active]:text-white"
-              >
-                Hardware
-              </TabsTrigger>
-              <TabsTrigger 
-                value="software"
-                className="data-[state=active]:bg-purple-500 data-[state=active]:text-white"
-              >
-                Software
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
+          <div
+            id="gear-filter-options"
+            hidden={!filtersOpen}
+            className={filtersOpen ? 'grid grid-cols-1 sm:grid-cols-2 gap-6 pt-5' : 'hidden'}
+          >
+            {filterGroups.map(group => (
+              <fieldset key={group.label} className={group.label === 'Categories' ? 'min-w-0 sm:col-span-2' : 'min-w-0'}>
+                <legend className="text-sm font-medium mb-2">{group.label}</legend>
+                {group.label === 'Categories' && (
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setSelectedCategories(categories)}
+                      disabled={selectedCategories.length === categories.length}
+                    >
+                      <Check className="h-4 w-4 mr-2" aria-hidden="true" />
+                      Select all
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setSelectedCategories([])}
+                      disabled={selectedCategories.length === 0}
+                    >
+                      <X className="h-4 w-4 mr-2" aria-hidden="true" />
+                      Select none
+                    </Button>
+                  </div>
+                )}
+                <div className="flex flex-wrap gap-x-6 gap-y-1">
+                  {group.options.map(option => (
+                    <label key={option} className="flex items-center gap-2 min-h-[44px] max-w-full cursor-pointer text-sm">
+                      <input
+                        type="checkbox"
+                        checked={group.selected.includes(option)}
+                        onChange={() => toggleFilter(option, group.setSelected)}
+                        className="h-4 w-4 shrink-0 accent-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                      />
+                      <span className="break-words min-w-0">{option}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            ))}
+          </div>
+        </section>
 
        
 
@@ -156,21 +205,6 @@ export function GearPage({ onNavigate }: GearPageProps) {
                     alt={gear.name}
                     className="w-full h-full object-contain"
                   />
-                  <div className="absolute top-4 left-4">
-                    <Badge className={gear.current ? 'bg-green-500 text-white' : 'bg-orange-500 text-white'}>
-                      {gear.current ? (
-                        <>
-                          <Check className="h-3 w-3 mr-1" />
-                          Current
-                        </>
-                      ) : (
-                        <>
-                          <X className="h-3 w-3 mr-1" />
-                          Historical
-                        </>
-                      )}
-                    </Badge>
-                  </div>
                   <div className="absolute top-4 right-4">
                     <Badge className={gear.type === 'Hardware' ? 'bg-blue-500 text-white' : 'bg-purple-500 text-white'}>
                       {gear.type === 'Hardware' ? (
@@ -305,7 +339,11 @@ export function GearPage({ onNavigate }: GearPageProps) {
 
         {filteredGear.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">No gear found for the selected filter.</p>
+            <p className="text-muted-foreground text-lg mb-4">No gear matches the selected filters.</p>
+            <Button variant="outline" onClick={resetFilters}>
+              <RotateCcw className="h-4 w-4 mr-2" aria-hidden="true" />
+              Reset filters
+            </Button>
           </div>
         )}
 

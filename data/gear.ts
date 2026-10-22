@@ -62,7 +62,7 @@ export const gearData = [
   {
     id: "kontakt",
     name: "Native Instruments Kontakt",
-    category: "Virtual Instrument Platform",
+    category: "Virtual Instrument",
     type: "Software",
     description: "Native Instruments Kontakt with Komplete 13.",
     image: "/images/gear/kontakt.jpg",
@@ -102,7 +102,7 @@ export const gearData = [
   {
     id: "rp3",
     name: "Digitech RP3",
-    category: "Pedal",
+    category: "Pedal/FX",
     type: "Hardware",
     description: "",
     image: "/images/gear/rp3.jpg",
@@ -112,7 +112,7 @@ export const gearData = [
   {
     id: "rp100",
     name: "Digitech RP100",
-    category: "Pedal",
+    category: "Pedal/FX",
     type: "Hardware",
     description: "",
     image: "/images/gear/rp100.jpg",
@@ -182,7 +182,7 @@ export const gearData = [
   {
     id: "21h",
     name: "Leslie 21H",
-    category: "Speaker",
+    category: "Amplifier",
     type: "Hardware",
     description: "",
     image: "/images/gear/21h.jpg",
@@ -242,7 +242,7 @@ export const gearData = [
   {
     id: "uad-minimoog",
     name: "UAD Minimoog",
-    category: "Virtual Instrument",
+    category: "Synthesizer",
     type: "Software",
     description: "",
     image: "/images/gear/minimoog.jpg",
@@ -282,7 +282,7 @@ export const gearData = [
   {
     id: "strymon-big-sky",
     name: "Strymon Big Sky",
-    category: "Reverb",
+    category: "Pedal/FX",
     type: "Hardware",
     description: "",
     image: "/images/gear/bigsky.jpg",
@@ -542,7 +542,7 @@ export const gearData = [
   {
     id: "me-50",
     name: "Boss ME-50",
-    category: "Guitar Pedal",
+    category: "Pedal/FX",
     type: "Hardware",
     description: "",
     image: "/images/gear/me-50.jpg",
@@ -602,7 +602,7 @@ export const gearData = [
   {
     id: "v-station",
     name: "Novation V-Station",
-    category: "Software Synthesizer",
+    category: "Synthesizer",
     type: "Software",
     description: "An early VST software synth based on the K-Station hardware synth. I used this frequently as my go-to for rubbery bass.",
     image: "/images/gear/v-station.jpg",
@@ -612,7 +612,7 @@ export const gearData = [
   {
     id: "rebirth",
     name: "Propellerhead ReBirth RB-338",
-    category: "Software Synthesizer",
+    category: "Synthesizer",
     type: "Software",
     description: "Rebirth is a legendary piece of software that emulates the Roland TB-303 bass synthesizer and TR-808 and TR-909 drum machines. This was one of the first pieces of software that we used, and created many Pitchblende tracks with it. It is now available as freeware and still runs on modern computers. ",
     image: "/images/gear/rebirth.jpg",
@@ -622,7 +622,7 @@ export const gearData = [
   {
     id: "cakewalk-sonar",
     name: "Cakewalk SONAR",
-    category: "Digital Audio Workstation",
+    category: "DAW",
     type: "Software",
     description: "Around 2004, we were feeling the limitations of Fruity Loops and started experimenting with other DAWs including Cakewalk SONAR 3/4. We used it on a few FilterSlut & E-Lusion/Skepsys tracks and took advantage of features not really possible in Fruity Loops such as time-stretching.",
     image: "/images/gear/sonar.jpg",
@@ -632,7 +632,7 @@ export const gearData = [
   {
     id: "nepheton",
     name: "D16 Nepheton",
-    category: "Software Drum Machine",
+    category: "Drum Machine",
     type: "Software",
     description: "One of the better TR-808 emulators I've used. I've only used version 1 to make loops in FL Studio but apparently version 2 is out now with even more features.",
     image: "/images/gear/nepheton.jpg",
@@ -642,7 +642,7 @@ export const gearData = [
   {
     id: "camelphat",
     name: "Camel Audio CamelPhat",
-    category: "Software Multi-Effect",
+    category: "Pedal/FX",
     type: "Software",
     description: "CamelPhat was a popular multi-effect plugin used back in the day. Camel Audio was acquired by Apple in 2015 and CamelPhat was re-designed as Phat FX.",
     image: "/images/gear/camelphat.jpg",
@@ -652,7 +652,7 @@ export const gearData = [
   {
     id: "albino",
     name: "Rob Papen Inspiration Soundware Albino",
-    category: "Software Synthesizer",
+    category: "Synthesizer",
     type: "Software",
     description: "Originally released in 2006, Albino-3 was the result of a collaboration between Virtual Instrument designer Peter Linsener and Dutch sound designer and musician Rob Papen. ",
     image: "/images/gear/albino.jpg",
@@ -662,7 +662,7 @@ export const gearData = [
   {
     id: "predator",
     name: "Rob Papen Inspiration Soundware Predator",
-    category: "Software Synthesizer",
+    category: "Synthesizer",
     type: "Software",
     description: "When it was released, Predator was an impressive software synth that could make interesting drum and bass basses and leads.",
     image: "/images/gear/predator.jpg",
@@ -672,7 +672,7 @@ export const gearData = [
   {
     id: "discovery",
     name: "DiscoDSP Discovery",
-    category: "Software Synthesizer",
+    category: "Synthesizer",
     type: "Software",
     description: "A great emulation of the Nord Lead 2 that can generate complex and interesting sounds. ",
     image: "/images/gear/discovery.jpg",
@@ -682,7 +682,7 @@ export const gearData = [
   {
     id: "polysix",
     name: "Korg Polysix",
-    category: "Software Synthesizer",
+    category: "Synthesizer",
     type: "Software",
     description: "Software emulation of the Korg Polysix hardware synth.",
     image: "/images/gear/polysix.jpg",
@@ -692,7 +692,7 @@ export const gearData = [
   {
     id: "fm8",
     name: "Native Instruments FM7/FM8",
-    category: "Software Synthesizer",
+    category: "Synthesizer",
     type: "Software",
     description: "My go-to for software FM synthesis.",
     image: "/images/gear/fm8.jpg",
@@ -742,7 +742,7 @@ export const gearData = [
   {
     id: "ozone",
     name: "iZotope Ozone 9",
-    category: "Mastering",
+    category: "Audio Editing",
     type: "Software",
     description: "A comprehensive mastering suite that provides a wide range of tools for audio processing and enhancement.",
     image: "/images/gear/ozone.jpg",
@@ -789,10 +789,20 @@ export const gearData = [
     url: "https://www.behringer.com/product.html?modelCode=P0A0S",
     current: true
   },
+  {
+    id: "sE7",
+    name: "sE sE7 (stereo matched pair)",
+    category: "Microphone",
+    type: "Hardware",
+    description: "",
+    image: "",
+    url: "https://seelectronics.com/products/se7/",
+    current: true
+  },
 {
     id: "boss-katana-50-mkii",
     name: "Boss Katana 50 mkII",
-    category: "Guitar Amplifier",
+    category: "Amplifier",
     type: "Hardware",
     description: "",
     image: "",
@@ -812,7 +822,7 @@ export const gearData = [
   {
     id: "schecter-hellraiser-c1",
     name: "Schecter Hellraiser C1",
-    category: "Electric Guitar",
+    category: "Guitar",
     type: "Hardware",
     description: "",
     image: "",
@@ -822,7 +832,7 @@ export const gearData = [
   {
     id: "bm-14m",
     name: "Behringer BM-14M",
-    category: "FX",
+    category: "Pedal/FX",
     type: "Hardware",
     description: "",
     image: "/images/gear/bm14m.jpg",

@@ -159,7 +159,7 @@ export const releasesData = [
     artwork: "/images/releases/deadbeat.jpg",
     description: "The first single off Paranoia's EP. Drums were recorded with a matched stereo pair of sE sE7 overheads (X/Y), Shure	Beta 52A for kick, SM57 on Snare, MD421 on floor tom, SM58 on rack toms and Behringer B1 as a room mic, all recorded directly into Focusrite Scarlet 18i20. Shecter Hellraiser C1 was run through the Boss Katana before going into the i1820. Bass was DI with FX applied in Cubase. Vocals were recorded with SM58.",
     tracks: ["deadbeat"],
-    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"],
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7", "sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"],
     streamingLinks: {
       appleMusic: "https://music.apple.com/us/album/deadbeat-single/6800463801",
       spotify: "https://open.spotify.com/album/1aBfdXzoYDmHmJMD3FKyz2?si=Z5MAuS_5TaiDNtwLHt7Cbg",
