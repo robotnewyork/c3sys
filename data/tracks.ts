@@ -384,5 +384,90 @@ export const tracksData: Track[] = [
     },
     description: "",
     gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7","sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
+  },
+  {
+    id: "deadbeat-2",
+    title: "Deadbeat",
+    artist: "Paranoia",
+    artistId: "paranoia",
+    releaseId: "C3P002",
+    duration: "3:43",
+    trackNumber: 1,
+    featured: true,
+    streamingLinks: {
+      appleMusic: "https://music.apple.com/us/song/deadbeat/6825146506",
+      spotify: "https://open.spotify.com/track/3fQSs0NGBvXtspjSGrkRtm?si=932ac2e188114840",
+      youtube: "https://youtu.be/XDlYZLrtEQ0?si=nL3iLsP2cLLWBe0Q"
+    },
+    description: "",
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7","sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
+  },
+  {
+    id: "break-the-cycle",
+    title: "Break the Cycle",
+    artist: "Paranoia",
+    artistId: "paranoia",
+    releaseId: "C3P002",
+    duration: "4:22",
+    trackNumber: 2,
+    featured: true,
+    streamingLinks: {
+      appleMusic: "https://music.apple.com/us/song/break-the-cycle/6825146507",
+      spotify: "https://open.spotify.com/track/0DKZ2j6X7wDVUMUUd6AyKP?si=01d530c2cc904501",
+      youtube: "https://youtu.be/Frn_Zjol_CU?si=1uEjPZe_QgJz-7wc"
+    },
+    description: "",
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7","sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
+  },
+  {
+    id: "down-with-you",
+    title: "Down with You",
+    artist: "Paranoia",
+    artistId: "paranoia",
+    releaseId: "C3P002",
+    duration: "4:13",
+    trackNumber: 3,
+    featured: true,
+    streamingLinks: {
+      appleMusic: "https://music.apple.com/us/song/down-with-you/6825146808",
+      spotify: "https://open.spotify.com/track/0QbB4jloAX34mCXsTtXN8L?si=056fb7a3af4947cc",
+      youtube: "https://youtu.be/0ioz0pxQ8FU?si=0-28KPq7ofZJeshe"
+    },
+    description: "",
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7","sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
+  },
+  {
+    id: "losing-myself-in-you",
+    title: "Losing Myself in You",
+    artist: "Paranoia",
+    artistId: "paranoia",
+    releaseId: "C3P002",
+    duration: "5:28",
+    trackNumber: 4,
+    featured: true,
+    streamingLinks: {
+      appleMusic: "https://music.apple.com/us/song/losing-myself-in-you/6825146809",
+      spotify: "https://open.spotify.com/track/6LrtOT67H6xEXA1OxZzRgj?si=945df2b480ca492a",
+      youtube: "https://youtu.be/gEhv5Zr-9AI?si=N-EsmSuB6X3uzdtV"
+    },
+    description: "",
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7","sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
+  },
+  {
+    id: "a-place-to-call-home",
+    title: "A Place to Call Home",
+    artist: "Paranoia",
+    artistId: "paranoia",
+    releaseId: "C3P002",
+    duration: "5:45",
+    trackNumber: 5,
+    featured: true,
+    streamingLinks: {
+      appleMusic: "https://music.apple.com/us/song/a-place-to-call-home/6825146811",
+      spotify: "https://open.spotify.com/track/0Yg05Yn9Jj8wTkSeDPq9RP?si=0cb2acd547854c21",
+      youtube: "https://youtu.be/IOm8jGJyb4s?si=Q8XA3XjNN_k9WalT"
+    },
+    description: "",
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7","sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"]
   }
 ];

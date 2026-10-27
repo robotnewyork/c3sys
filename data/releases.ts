@@ -173,5 +173,33 @@ export const releasesData = [
     ],
     featured: true,
     released: true
+  },
+  {
+    id: "C3P002",
+    title: "I'm Already Losing",
+    artist: "Paranoia",
+    artistId: "paranoia",
+    releaseDate: "2026-10-27",
+    catalogNumber: "C3P002",
+    format: [],
+    genre: ["Hard Rock", "Heavy Metal", "Metalcore", "Alternative"],
+    artwork: "/images/releases/im-already-losing.jpg",
+    description: "Rob and Cody came to me with five songs already prepared for an EP. We recorded Deadbeat first and released it as a single, and meanwhile recorded and mixed the other four tracks. Drums were recorded with a matched stereo pair of sE sE7 overheads (X/Y), Shure	Beta 52A for kick, SM57 on Snare, MD421 on floor tom, SM58 on rack toms and Behringer B1 as a room mic, all recorded directly into Focusrite Scarlet 18i20. I ended up using UAD API Vision Channel Strip for most of the drum tracks. Shecter Hellraiser C1 was run through the Boss Katana before going into the i1820. The Katana has FX built in, so most of the guitar sound is coming straight from the Katana amp. Bass was DI with FX applied in Cubase. Vocals were recorded with MD421 (SM58 on Deadbeat) with UAD 1176 into LA-2A, with send FX to some UAD amp plugins for scream vocals. In the mixing process, we tried to keep everything more natural sounding rather than artificially overproduced and quantized, going for a late 90s - early 2000s vibe. ",
+    tracks: ["deadbeat-2", "break-the-cycle", "down-with-you", "losing-myself-in-you", "a-place-to-call-home"],
+    gear: ["schecter-hellraiser-c1", "boss-katana-50-mkii", "sterling-stingray-musicman", "sE7", "sm58", "sm57", "md421", "beta52a", "b1", "18i20", "cubase", "ozone", "soundforge"],
+    streamingLinks: {
+      appleMusic: "https://music.apple.com/us/album/im-already-losing-ep/6825146505",
+      spotify: "https://open.spotify.com/album/3IzmReT8vvbFaqKJi7Jdgn",
+      youtube: "https://www.youtube.com/watch?v=XDlYZLrtEQ0&list=OLAK5uy_nfeV-w5mdEw5r1frtcARvi0JMMKaa8V1E"
+    },
+    credits: [
+      { name: "Cody Redford", role: "Vocals/Guitar" },
+      { name: "Rob Turpin", role: "Drums/Bass" },
+      { name: "Chad Wilson", role: "Engineer/Mixing" },
+      { name: "Nour Kennedy", role: "Cover Art" }
+    ],
+    featured: true,
+    released: true
   }
 ];
+
