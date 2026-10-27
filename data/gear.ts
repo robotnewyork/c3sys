@@ -795,7 +795,7 @@ export const gearData = [
     category: "Microphone",
     type: "Hardware",
     description: "",
-    image: "",
+    image: "/images/gear/se7.jpg",
     url: "https://seelectronics.com/products/se7/",
     current: true
   },
@@ -805,8 +805,8 @@ export const gearData = [
     category: "Amplifier",
     type: "Hardware",
     description: "",
-    image: "",
-    url: "https://www.boss.info/us/products/katana_50_mkii/",
+    image: "/images/gear/katana.jpg",
+    url: "https://www.boss.info/global/products/katana-50_mk2/",
     current: false
   },
   {
@@ -815,7 +815,7 @@ export const gearData = [
     category: "Bass Guitar",
     type: "Hardware",
     description: "",
-    image: "",
+    image: "/images/gear/stingray.jpg",
     url: "https://www.music-man.com/instruments/basses/sterling-stingray",
     current: false
   },
@@ -825,7 +825,7 @@ export const gearData = [
     category: "Guitar",
     type: "Hardware",
     description: "",
-    image: "",
+    image: "/images/gear/hellraiser-c1.jpg",
     url: "https://www.schecterguitars.com/guitars/c/hellraiser-c-1",
     current: false
   },
